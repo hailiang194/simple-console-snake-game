@@ -1,6 +1,6 @@
-Demo simple console snake game
-QUICK GUIDE
-W - UP
-A - LEFT
-S - DOWN
-D - RIGHT
+Demo simple console snake game</br>
+QUICK GUIDE</br>
+W - UP</br>
+A - LEFT</br>
+S - DOWN</br>
+D - RIGHT</br>
