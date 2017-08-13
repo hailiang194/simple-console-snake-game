@@ -229,10 +229,9 @@ void update_snake(object_t *snake, location_t *fruit, int direct)
 
 	int prev2X = 0, prev2Y = 0;
 
-	//NEED BEBUG
 	//first, save old location -> prev
 	//next, save location of next snake point -> done
-	//finally, set next snake point to old location
+	//finally, set next snake point to old location -> done
 
 	
 	while(i < MAX_LENGTH_SNAKE && snake[i].isExist)
