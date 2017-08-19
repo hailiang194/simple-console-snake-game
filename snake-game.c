@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <unistd.h>
-#include <string.h>
+
+#include "info-game.h"
 
 #define TRUE 1
 #define FALSE 0
@@ -11,23 +12,6 @@
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
-
-#define WIDTH 20
-#define HEIGHT 10
-
-const int MAX_LENGTH_SNAKE = WIDTH * HEIGHT;
-
-typedef struct LOCATION
-{
-	int x;
-	int y;
-} location_t;
-
-typedef struct OBJECT
-{
-	location_t location;
-	int isExist : 3;
-} object_t;
 
 void show_logo();
 void game_option_scene();
