@@ -6,4 +6,4 @@
 | oooo  **   ***  oo      oo **  ** oooooo |
 +------------------------------------------+
 
-copyright (C) 2017 Luong The Hai.
+Copyright (C) 2017 Luong The Hai.
