@@ -13,7 +13,7 @@
 
 
 void setup(object_t *snake, location_t *fruit, int *direct);
-void control(int *direct);
+void control(object_t *snake, int *direct);
 void show_game_scene(const object_t *snake, location_t fruit);
 
 int get_random(int n);
@@ -42,8 +42,11 @@ void setup(object_t *snake, location_t *fruit, int *direct)
 	set_fruit(fruit);
 }
 
-void control(int *direct)
+void control(object_t *snake ,int *direct)
 {
+	int lastDirect = *direct;
+	int hasTail = snake[1].isExist;
+
 	if(kbhit())
 	{
 		char c = getch();
@@ -51,19 +54,23 @@ void control(int *direct)
 		{
 			case 'w':
 			case 'W':
-				*direct = UP;
+				if(lastDirect != DOWN || !hasTail)
+					*direct = UP;
 				break;
 			case 'a':
 			case 'A':
-				*direct = LEFT;
+				if(lastDirect != RIGHT || !hasTail)
+					*direct = LEFT;
 				break;
 			case 's':
 			case 'S':
-				*direct = DOWN;
+				if(lastDirect != UP || !hasTail)
+					*direct = DOWN;
 				break;
 			case 'd':
 			case 'D':
-				*direct = RIGHT;
+				if(lastDirect != LEFT || !hasTail)
+					*direct = RIGHT;
 			default:
 				break;
 		}
@@ -91,7 +98,7 @@ void set_location(location_t *object, int newX, int newY)
 
 void update(object_t *snake, location_t *fruit, int *direct)
 {
-	control(direct);
+	control(snake,direct);
 	update_snake(snake, fruit, *direct);
 	show_game_scene(snake, *fruit);
 	sleep(1);
