@@ -14,7 +14,7 @@ typedef struct LOCATION
 
 typedef struct OBJECT
 {
-	location_t location;
+	location_t *location;
 	int isExist : 3;
 } object_t;
 
