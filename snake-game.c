@@ -65,6 +65,10 @@ void game_option_scene()
 void game_scene()
 {
 	object_t *snake = (object_t *)malloc(MAX_LENGTH_SNAKE * sizeof(object_t));
+
+	for(int i = 0; i < MAX_LENGTH_SNAKE; i++)
+		snake[i].location = (location_t *)malloc(sizeof(location_t));
+
 	location_t fruit;
 	int direct;
 
