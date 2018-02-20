@@ -29,12 +29,12 @@ void setup(object_t *snake, location_t *fruit, int *direct)
 	*direct = LEFT;
 
 	//set new snake
-	set_location( &(snake[0].location), WIDTH / 2, HEIGHT / 2);
+	set_location( snake[0].location, WIDTH / 2, HEIGHT / 2);
 	snake[0].isExist = TRUE;
 
 	for(int i = 1; i < MAX_LENGTH_SNAKE;i++)
 	{
-		set_location( &(snake[i].location), 0, 0);
+		set_location( snake[i].location, 0, 0);
 		snake[i].isExist = FALSE;
 	}
 
@@ -108,9 +108,9 @@ void update(object_t *snake, location_t *fruit, int *direct)
 void update_snake(object_t *snake, location_t *fruit, int direct)
 {
 
-	location_t *snakePointLocation = &(snake[0].location);
-	int prevX = snake[0].location.x;
-	int prevY = snake[0].location.y;
+	location_t *snakePointLocation = snake[0].location;
+	int prevX = snake[0].location -> x;
+	int prevY = snake[0].location -> y;
 	
 	//set location of snake's head point
 	switch(direct)
@@ -143,11 +143,11 @@ void update_snake(object_t *snake, location_t *fruit, int direct)
 	while(i < MAX_LENGTH_SNAKE && snake[i].isExist)
 	{
 		
-		prev2X = snake[i].location.x; 
-		prev2Y = snake[i].location.y;		
+		prev2X = snake[i].location -> x; 
+		prev2Y = snake[i].location -> y;		
 		
-		snake[i].location.x = prevX;
-		snake[i].location.y = prevY;
+		snake[i].location -> x = prevX;
+		snake[i].location -> y = prevY;
 
 		prevX = prev2X;
 		prevY = prev2Y;
@@ -157,8 +157,8 @@ void update_snake(object_t *snake, location_t *fruit, int direct)
 	if(is_eat_fruit(snake, *fruit))
 	{
 		snake[i].isExist = TRUE;
-		snake[i].location.x = prevX;
-		snake[i].location.y = prevY;
+		snake[i].location -> x = prevX;
+		snake[i].location -> y = prevY;
 		set_fruit(fruit);
 	}
 }
@@ -187,7 +187,8 @@ void show_game_scene(const object_t *snake, location_t fruit)
 		{
 			if( is_snake_point(snake, j, i) )
 			{
-				if(j == snake[0].location.x && i == snake[0].location.y)
+				if(j == snake[0].location -> x 
+					&& i == snake[0].location -> y)
 					printf("%c", SNAKE_HEAD_POINT);
 				else
 					printf("%c", SNAKE_POINT);
